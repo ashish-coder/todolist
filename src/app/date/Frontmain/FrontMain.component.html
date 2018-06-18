@@ -1,9 +1,43 @@
 <div style="text-align:center">
 
+  <label>Select Month and Year: </label>
+  <div>
+    Month:
+  <select (change)="selectChangeHandeler($event)" >
+    <option value="0">--Month--</option>
+    <option *ngFor="let monthpickers of monthpicker" [value]="monthpickers.name">
 
-  <router-outlet>
+      {{monthpickers.value}}
+    </option>
 
-  </router-outlet>
+  </select>
+
+  </div>
+
+  <div>
+    Year:
+    <select (change)="selectChangeHandelerforyear($event)" >
+      <option value="0">--Year--</option>
+      <option *ngFor="let yearpicker of yeararray" [value]="yearpicker.year">
+
+        {{yearpicker.year}}
+      </option>
+
+    </select>
+
+  </div>
+
+  <div
+    *ngFor="let todolistss of days;let i=index">
+
+    <button
+      (click)="todolistofdate(todolistss)">
+      {{todolistss}}
+    </button>
+
+
+  </div>
+
 
 </div>
 

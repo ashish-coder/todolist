@@ -2,14 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 
-import { AppComponent } from './app.component';
-import {DateComponent} from './date/containers/date.component';
 import {RouterModule, Routes} from '@angular/router';
-//import {FrontMainModule} from './Frontmain/FrontMain.module';
-import {FrontMainComponent} from './date/Frontmain/FrontMain.component';
+import {FrontMainComponent} from './FrontMain.component';
+import {DateComponent} from '../containers/date.component';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-import {DateService} from './date/date.service';
+import {DateService} from '../date.service';
 
 
 export const ROUTES: Routes = [
@@ -19,9 +17,8 @@ export const ROUTES: Routes = [
 
 @NgModule({
   declarations: [
-    AppComponent,
-    DateComponent,
-    FrontMainComponent
+    FrontMainComponent,
+    DateComponent
   ],
   imports: [
     BrowserModule,
@@ -31,6 +28,6 @@ export const ROUTES: Routes = [
 
   ],
   providers: [DateService],
-  bootstrap: [AppComponent]
+
 })
-export class AppModule { }
+export class FrontMainModule { }

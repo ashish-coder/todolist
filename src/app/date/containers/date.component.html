@@ -1,0 +1,193 @@
+<div>
+
+
+  <form   #form="ngForm" >
+
+    <div [hidden]="isHidden">
+
+      Date :
+      <label>{{printdate}}</label>
+    </div>
+    <div>
+
+      <label [hidden]="!isHidden">
+        Date:
+        <input
+
+          [disabled]="isdisabeld"
+          type="text"
+          name="yourdate"
+          #yourdate="ngModel"
+          required
+          [ngModel]="datetodo">
+      </label>
+
+
+    </div>
+
+    <label>
+
+      <input
+        hidden=true
+        type="text"
+        name="id"
+        #id="ngModel"
+        required
+        [ngModel]="idtodo">
+    </label>
+
+    <label>
+
+      Name:
+      <input
+        [disabled]="isdisabeld"
+        type="text"
+        name="Eventname"
+        #Eventname="ngModel"
+        required
+        [ngModel]="typeName">
+    </label>
+    <div>
+      Select an Event:
+      <select (change)="selectChangeHandelerforform($event)"
+              name="Typeoftodo" #Typeoftodo="ngModel" [ngModel]="typetotodowork" required [disabled]="isdisabeld">
+        <option value="0">Select</option>
+        <option value="1">Birthday</option>
+        <option value="2">Anniversary</option>
+        <option value="3">others</option>
+
+      </select>
+    </div>
+
+    <div *ngIf="selectvalueform==1">
+
+      Name of person:
+      <input
+        [disabled]="isdisabeld"
+        type="text"
+        name="mainname"
+        #mainname="ngModel"
+        [ngModel]="mainnametodo">
+      <div>
+        Time of reminder:
+        <input
+          [disabled]="isdisabeld"
+          type="time"
+          name="time"
+          #time="ngModel"
+          [ngModel]="timetodo"
+        >
+      </div>
+      <div>
+        What want to say:
+        <input
+          [disabled]="isdisabeld"
+          type="text"
+          name="about"
+          #about="ngModel"
+          [ngModel]="abouttodaytodo">
+      </div>
+    </div>
+    <div *ngIf="selectvalueform==2">
+
+      <div>
+        Type of anniversary:
+        <input
+          [disabled]="isdisabeld"
+          type="text"
+          name="mainname"
+          #mainname="ngModel"
+          [ngModel]="mainnametodo">
+      </div>
+      <div>
+        Time anniversary:
+        <input
+          [disabled]="isdisabeld"
+          type="time"
+          name="time"
+          #time="ngModel"
+          [ngModel]="timetodo">
+      </div>
+      <div>
+        What you do want to do on anniversary:
+        <input
+          [disabled]="isdisabeld"
+          type="text"
+          name="about"
+          #about="ngModel"
+          [ngModel]="abouttodaytodo">
+      </div>
+
+
+    </div>
+    <div *ngIf="selectvalueform==3">
+
+      <div>
+        Type of Todo:
+        <input
+          [disabled]="isdisabeld"
+          type="text"
+          name="mainname"
+          #mainname="ngModel"
+          [ngModel]="mainnametodo">
+      </div>
+      <div>
+        Time of todo:
+        <input
+          [disabled]="isdisabeld"
+          type="time"
+          name="time"
+          #time="ngModel"
+          [ngModel]="timetodo">
+      </div>
+      <div>
+        What u want to do today:
+        <input
+          [disabled]="isdisabeld"
+          type="text"
+          name="about"
+          #about="ngModel"
+          [ngModel]="abouttodaytodo">
+      </div>
+    </div>
+
+    <div>
+
+      <button
+        type="submit"
+        (click)="handelSubmit(form.value)"
+        [hidden]="isHidden">
+        Add TODO
+      </button>
+      <button [hidden]="!isHidden||!isHiddenedit"
+
+      (click)="onEdit()">
+        Edit
+      </button>
+      <button
+        type="submit"
+        (click)="onupdate(form.value)"
+        [hidden]="isHiddenedit">
+        Add Changes
+      </button>
+    </div>
+
+  </form>
+
+  <div *ngFor="let informationtoprint of informationjson">
+    <div *ngIf="informationtoprint.yourdate==printdate">
+
+
+    <button class="viewclass" (click)="onview(informationtoprint)">
+        {{informationtoprint.Eventname}}
+
+    </button>
+
+
+      <button type="submit" (click)="onRemove(informationtoprint)">
+        Delete
+      </button>
+    </div>
+  </div>
+
+</div>
